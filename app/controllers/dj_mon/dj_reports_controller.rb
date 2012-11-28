@@ -2,7 +2,8 @@ module DjMon
   class DjReportsController < ActionController::Base
     respond_to :json, :html
     layout 'dj_mon'
-
+    before_filter :require_user
+    before_filter :require_admin
     #before_filter :authenticate
     before_filter :set_api_version
 
