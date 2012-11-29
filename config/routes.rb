@@ -1,5 +1,5 @@
-DjMon::Engine.routes.draw do
-
+Rails.application.routes.draw do
+namespace :admin do
   resources :dj_reports do
     collection do
       get :all
@@ -13,6 +13,6 @@ DjMon::Engine.routes.draw do
       post :retry
     end
   end
-
+end
   root :to => 'dj_reports#index'
 end
