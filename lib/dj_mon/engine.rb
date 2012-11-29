@@ -1,11 +1,11 @@
 module DjMon
   class Engine < Rails::Engine
 
-    isolate_namespace DjMon
+    isolate_namespace DjMon if %w[development testing].include?(Rails.env)
 
-    config.dj_mon = ActiveSupport::OrderedOptions.new
-    # config.dj_mon.username = "dj_mon"
-    # config.dj_mon.password = "password"
+    #config.dj_mon = ActiveSupport::OrderedOptions.new
+    #config.dj_mon.username = "dj_mon"
+    #config.dj_mon.password = "password"
 
     if Rails.version > "3.1"
       initializer "DJMon precompile hook" do |app|
