@@ -1,2 +1,2 @@
-class DjMon::AplicationController < ApplicationController
+class DjMon::ApplicationController < ApplicationController
 end
