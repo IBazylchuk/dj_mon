@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  namespace :admin do
     resources :dj_reports do
       collection do
         get :all
@@ -13,6 +12,5 @@ Rails.application.routes.draw do
         post :retry
       end
     end
-  end
   root :to => 'dj_reports#index'
 end
