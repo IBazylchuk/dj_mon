@@ -3,7 +3,7 @@ module DjMon
     respond_to :json, :html
     layout 'dj_mon'
     
-    before_filter :require_admin
+    before_filter :authenticate_djmon_user
     #before_filter :authenticate
     before_filter :set_api_version
 
