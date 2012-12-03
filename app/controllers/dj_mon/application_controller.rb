@@ -3,7 +3,7 @@ class DjMon::ApplicationController < ApplicationController
   private 
   def authenticate_djmon_user
   	logger.debug "~~~~~~~~~~~~HELLO FROM DJ MON!!!"
-    if !djmon_user && !djmon_user.admin?
+    if !djmon_user
       logger.debug "~~~~~~~~NO USER"
       session["user_return_to"] = request.fullpath
       flash.alert = 'Admin not signed in'
@@ -11,6 +11,8 @@ class DjMon::ApplicationController < ApplicationController
       if login_path
       	redirect_to login_path
       end
+    elsif !djmon_user.admin?
+    	redirect_to main_app.send(:root_path)
     end
   end
 end
