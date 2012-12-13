@@ -10,17 +10,17 @@ $(function(){
     var currentTab = e.target;
     var tabContent = $($(currentTab).attr('href'));
     var dataUrl = tabContent.data('url');
-
-    $.getJSON(dataUrl).success(function(data){
+    $.getJSON(dataUrl,function(data){
       var template = $('#dj_reports_template').html();
-      if(data.length > 0)
-        var output = Mustache.render(template, data);
+      console.log(typeof(data))
+      if(data)
+        var output = Mustache.render(template, data["dj_reports"]);
       else
         var output = "<div class='alert centered'>No Jobs</div>";
       tabContent.html(output);
     });
 
-  })
+  });
 
   $('.nav.nav-tabs li.active a[data-toggle="tab"]').trigger('shown');
 

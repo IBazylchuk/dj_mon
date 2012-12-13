@@ -25,7 +25,11 @@ module DjMon
     end
 
     def payload job
-      job.payload_object.respond_to?(:object) ? job.payload_object.object.to_yaml : job.payload_object.to_yaml
+      # old, not working code
+      #job.payload_object.respond_to?(:object) ? job.payload_object.object.to_yaml : job.payload_object.to_yaml
+
+      # code that makes it work for us
+      job.payload_object.to_yaml
     end
 
     class << self
