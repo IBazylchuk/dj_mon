@@ -1,5 +1,6 @@
 class DjMon::ApplicationController < ApplicationController
   helper_method :authenticate_djmon_user
+  
   private 
   def authenticate_djmon_user
   	logger.debug "~~~~~~~~~~~~HELLO FROM DJ MON!!!"
@@ -11,8 +12,10 @@ class DjMon::ApplicationController < ApplicationController
       if login_path
       	redirect_to login_path
       end
-    elsif !djmon_user.admin?
+
+    elsif djmon_user.admin? == false
     	redirect_to main_app.send(:root_path)
     end
   end
+
 end
